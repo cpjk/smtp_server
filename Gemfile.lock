@@ -2,13 +2,19 @@ GEM
   remote: https://rubygems.org/
   specs:
     gserver (0.0.1)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.3)
     mini-smtp-server (0.0.2)
+    multi_xml (0.5.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   gserver
+  httparty
   mini-smtp-server
 
 BUNDLED WITH

@@ -1,12 +1,22 @@
 require "mini-smtp-server"
 require "json"
 require "pry"
+require "httparty"
 
 class SMTPServer < MiniSmtpServer
   def new_message_event(message_hash)
-    json = JSON.generate message_hash
-    puts json
-    # POST to HTTP server
+    puts "posting"
+    body = {
+      "email" => {
+        "email" => {
+          "data" => message_hash[:data],
+          "sender_email" => message_hash[:from],
+          "receiver_email" => message_hash[:to]
+        }
+      }
+    }
+    HTTParty.post "http://localhost:4000/api/emails", body: body
+    puts "posted"
   end
 end
 
