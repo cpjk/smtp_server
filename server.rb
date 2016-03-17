@@ -4,6 +4,9 @@ require "pry"
 require "httparty"
 
 class SMTPServer < MiniSmtpServer
+  LISTEN_PORT = 1025
+  LISTEN_IP = "127.0.0.1"
+
   def new_message_event(message_hash)
     puts "posting"
     body = {
@@ -20,6 +23,6 @@ class SMTPServer < MiniSmtpServer
   end
 end
 
-server = SMTPServer.new(1025, "127.0.0.1", 4)
+server = SMTPServer.new(LISTEN_PORT, LISTEN_IP, 4)
 server.start
 server.join
